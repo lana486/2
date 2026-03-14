@@ -2,15 +2,10 @@ import Link from "next/link";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/ai-tutor", label: "AI Tutor" },
   { href: "/lesson-studio", label: "Lesson Studio" },
-  { href: "/courses", label: "Courses" },
-  { href: "/practice", label: "Practice" },
-  { href: "/speaking-trainer", label: "Speaking Trainer" },
-  { href: "/teachers", label: "Teachers" },
   { href: "/teachers/grammar-basics", label: "Teacher Hub" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/dashboard", label: "Dashboard" },
+  { href: "/about-us", label: "About Us" },
 ];
 
 export function MainNav() {
