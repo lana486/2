@@ -12,8 +12,12 @@ type ContentBlock = {
   id: string;
   title: string;
   subtitle: string;
+  summary: string;
+  imageLabel: string;
+  spotlight: string;
   points: string[];
   examples: string[];
+  tips: string[];
   checks: CheckQuestion[];
 };
 
@@ -21,30 +25,40 @@ const blocks: ContentBlock[] = [
   {
     id: "context",
     title: "Teach Grammar In Context",
-    subtitle: "Use input before pressure: listening, pictures, dialogues, flashcards, and stories.",
+    subtitle: "Dialogues, pictures, stories, flashcards, and listening cues.",
+    summary:
+      "This material focuses on presenting grammar through meaningful classroom situations. Instead of isolating forms too early, the teacher gives learners context, visual support, and understandable input first.",
+    imageLabel: "Dialogue + picture cues",
+    spotlight: "The teaching guide keeps returning to one principle: grammar is easier to learn when meaning comes before pressure.",
     points: [
-      "The book repeatedly models grammar through meaningful context before asking learners to produce it immediately.",
-      "Listening-and-doing, flashcards, dialogues, and pictures work as cues that lower pressure and make grammar easier to remember.",
-      "Stories and reading texts help learners see how grammar functions inside a complete message, not only as isolated forms.",
+      "Use context to help learners connect grammar with situation, people, and purpose.",
+      "Pictures and dialogues support understanding without heavy explanation.",
+      "Listening and reading can model grammar naturally before students speak.",
+      "Context makes later practice more memorable because learners remember the situation, not just the rule.",
     ],
     examples: [
-      "Imperatives can be combined with classroom actions and prepositions of place.",
-      "Flashcards can cue tenses, modal verbs, questions, and comparison structures.",
-      "Dialogues are especially useful for functional language such as requests, invitations, and offers.",
+      "Imperatives combine well with movement and classroom actions.",
+      "Flashcards can cue tense forms, modal verbs, questions, and comparisons.",
+      "Dialogues are especially useful for requests, invitations, and offers.",
+    ],
+    tips: [
+      "Start with scene and meaning.",
+      "Use visuals before metalanguage.",
+      "Let learners notice examples first.",
     ],
     checks: [
       {
         prompt: "Why does context matter in early grammar teaching?",
         options: [
-          "It lets learners understand meaning before focusing on form",
-          "It avoids using any target language",
-          "It replaces all practice activities",
+          "It helps learners understand meaning before focusing on form",
+          "It avoids target language completely",
+          "It replaces all practice work",
         ],
         correct: 0,
       },
       {
-        prompt: "Which support tool is presented as a flexible cue for many grammar points?",
-        options: ["Flashcards", "Only grammar tables", "Translation lists"],
+        prompt: "Which support tool is presented as flexible for many grammar points?",
+        options: ["Flashcards", "Only translation lists", "Only grammar tables"],
         correct: 0,
       },
     ],
@@ -52,30 +66,40 @@ const blocks: ContentBlock[] = [
   {
     id: "communication",
     title: "Build Communicative Practice",
-    subtitle: "Use information gaps, role play, diaries, and imaginary situations.",
+    subtitle: "Information gaps, role plays, diaries, and imaginary situations.",
+    summary:
+      "This material turns grammar into communication. Learners use the language to exchange information, make plans, ask questions, and respond in realistic or semi-realistic tasks.",
+    imageLabel: "Role play + diary board",
+    spotlight: "The guide treats grammar as something learners do together, not only something they label.",
     points: [
-      "Information gaps create a real need to communicate because learners hold different pieces of information.",
-      "Role play expands classroom reality and makes practice more motivating when the context and roles are clear.",
-      "Diaries, schedules, and timetables work especially well for future forms and question practice.",
+      "Information gaps create a genuine need to speak because learners do not hold the same information.",
+      "Role play expands classroom reality and helps grammar feel purposeful.",
+      "Diaries, schedules, and timetables are practical tools for future forms and question work.",
+      "Imaginary situations improve memory because they are surprising, unusual, or humorous.",
     ],
     examples: [
-      "A diary can introduce going to and later become a pair information-gap task.",
-      "A role play preparation box can clarify who is speaking, where, and why.",
-      "Imaginary situations improve memorization because they are unusual, funny, or surprising.",
+      "A diary can first introduce going to and later become a pair information-gap task.",
+      "A role play preparation frame helps clarify the situation and speaker roles.",
+      "Future plans are easier to practise when learners compare schedules and make decisions.",
+    ],
+    tips: [
+      "Make the information gap real.",
+      "Clarify who is speaking and why.",
+      "Use strange or memorable scenarios.",
     ],
     checks: [
       {
         prompt: "What makes an information gap effective?",
         options: [
           "Learners need to exchange missing information",
-          "Everyone has exactly the same text",
+          "Everyone has identical content",
           "The teacher gives all the answers first",
         ],
         correct: 0,
       },
       {
-        prompt: "Which structure does the book connect strongly with diary tasks?",
-        options: ["Going to for future plans", "Third conditional only", "Reported speech only"],
+        prompt: "Which language area does the guide connect strongly with diary work?",
+        options: ["Going to for future plans", "Reported speech only", "Third conditional only"],
         correct: 0,
       },
     ],
@@ -83,33 +107,43 @@ const blocks: ContentBlock[] = [
   {
     id: "noticing",
     title: "Check Meaning And Notice Patterns",
-    subtitle: "Use concept questions, noticing tasks, and example sentences.",
+    subtitle: "Concept questions, comparison work, and example-based noticing.",
+    summary:
+      "This material is about clarity and evidence. Instead of asking vague comprehension questions, teachers use concept questions and noticing activities to verify what learners really understand.",
+    imageLabel: "Concept questions board",
+    spotlight: "The strongest idea here is that accurate checking beats vague confirmation every time.",
     points: [
-      "Concept questions are more reliable than simply asking learners if they understand.",
-      "Good concept questions usually use simpler language and invite short, clear answers.",
-      "Noticing activities help learners compare forms, identify missing language, and detect patterns across examples.",
+      "Concept questions are more reliable than asking learners if they understand.",
+      "Good concept questions use language simpler than the target item.",
+      "Noticing tasks help learners compare structures and discover usage patterns.",
+      "Example sentences can be adapted so learners infer rules instead of receiving long explanations first.",
     ],
     examples: [
-      "Learners compare future meanings in timetables versus personal arrangements.",
-      "Missing-word tasks can show multiple uses of one common verb like got, make, or go.",
-      "Example sentences can be adapted so learners infer rules instead of only receiving them.",
+      "Learners compare timetable future and personal arrangement future.",
+      "Missing-word tasks reveal common structural patterns.",
+      "Sentence comparison helps students see what is possible and impossible in English.",
+    ],
+    tips: [
+      "Ask short questions with short answers.",
+      "Check meaning before pushing accuracy.",
+      "Use contrast to make patterns visible.",
     ],
     checks: [
       {
         prompt: "Why are concept questions valuable?",
         options: [
-          "They give the teacher better evidence of learner understanding",
+          "They provide better evidence of learner understanding",
           "They remove the need for practice",
-          "They are mainly used to test spelling",
+          "They mainly test spelling",
         ],
         correct: 0,
       },
       {
-        prompt: "What is the main aim of a noticing task?",
+        prompt: "What is the aim of a noticing task?",
         options: [
           "Help learners detect patterns and constraints in language",
-          "Make learners memorize without context",
           "Replace all speaking work",
+          "Force memorization without context",
         ],
         correct: 0,
       },
@@ -118,64 +152,43 @@ const blocks: ContentBlock[] = [
   {
     id: "revision",
     title: "Recycle And Revise Actively",
-    subtitle: "Use quizzes, miming, real objects, auctioning sentences, and short revision games.",
+    subtitle: "Miming, quizzes, real objects, sentence auctions, and revision games.",
+    summary:
+      "This material emphasizes that revision is not an optional extra. Learners need repeated, active returns to grammar through short, engaging, accuracy-focused activities.",
+    imageLabel: "Auction + game cards",
+    spotlight: "Revision is presented as ongoing teaching design, not as an emergency activity before a test.",
     points: [
-      "Revision should be frequent and active, not reserved for the end of term.",
-      "Games still serve a serious teaching purpose when they force learners to evaluate accuracy and meaning.",
-      "Techniques like sentence auctions are especially useful when learners confuse form details and word order.",
+      "Revision should happen frequently, not only at the end of a unit.",
+      "Games can support serious teaching when they require careful decisions about language.",
+      "Sentence auctions are useful when learners confuse form detail and word order.",
+      "Real objects and mime make grammar more physical and more memorable.",
     ],
     examples: [
-      "Keyword dictation focuses learners on grammar choices, not only spelling.",
-      "Real objects add curiosity and can cue modal verbs, narrative retelling, or speculation.",
-      "Auctioning sentences makes learners identify correct and incorrect structures collaboratively.",
+      "Keyword dictation shifts attention from spelling to grammar choice.",
+      "Sentence auctions push learners to judge correctness collaboratively.",
+      "Real objects can support speculation, retelling, and modal meaning.",
+    ],
+    tips: [
+      "Keep revision short and regular.",
+      "Use competition only when it supports noticing.",
+      "Choose games that require decisions, not passive recall.",
     ],
     checks: [
       {
-        prompt: "What is the main value of revision games in this book?",
+        prompt: "What is the main value of revision games in this guide?",
         options: [
           "They revisit previously studied language in engaging ways",
           "They replace lesson planning",
-          "They are only for advanced groups",
+          "They are useful only for advanced learners",
         ],
         correct: 0,
       },
       {
-        prompt: "When does sentence auctioning work particularly well?",
+        prompt: "When does sentence auctioning work especially well?",
         options: [
-          "When grammar meaning is fairly clear but form details cause confusion",
-          "Only with pronunciation drills",
-          "Only in one-to-one classes",
-        ],
-        correct: 0,
-      },
-    ],
-  },
-  {
-    id: "glossary",
-    title: "Use A Clear Teaching Toolkit",
-    subtitle: "Pair work, presentation, practice, tasks, drills, eliciting, monitoring, feedback.",
-    points: [
-      "The glossary emphasizes the difference between presentation, practice, and task stages.",
-      "Pair work and small-group structures dramatically increase learner talking time.",
-      "Eliciting, monitoring, scaffolding, and feedback form the core teacher behaviors around grammar practice.",
-    ],
-    examples: [
-      "Pair work allows every learner to speak instead of waiting for whole-class turns.",
-      "Monitoring means observing discreetly to check instructions, performance, and emerging errors.",
-      "A timeline can support tense comparison visually.",
-    ],
-    checks: [
-      {
-        prompt: "Which classroom organization increases learner talking time most directly?",
-        options: ["Pair work", "Teacher monologue", "Silent reading only"],
-        correct: 0,
-      },
-      {
-        prompt: "What does monitoring mean in the glossary?",
-        options: [
-          "Watching and listening without unnecessary interruption",
-          "Correcting every sentence immediately",
-          "Reading from the coursebook aloud",
+          "When meaning is fairly clear but form detail causes confusion",
+          "Only in pronunciation lessons",
+          "Only in one-to-one teaching",
         ],
         correct: 0,
       },
@@ -185,39 +198,29 @@ const blocks: ContentBlock[] = [
 
 const finalTest = [
   {
-    prompt: "According to the book, what should usually come before detailed language focus in reading-based grammar work?",
-    options: ["General understanding of the text", "Translation of each word", "Immediate grammar rules"],
+    prompt: "What usually comes before detailed language focus in reading-based grammar work?",
+    options: ["General understanding of the text", "Word-by-word translation", "Immediate rule explanation"],
     correct: 0,
   },
   {
-    prompt: "Which activity is highlighted for realistic, natural communication practice?",
-    options: ["Information gap", "Copying sentences only", "Silent grammar charts"],
+    prompt: "Which activity is highlighted for realistic communication practice?",
+    options: ["Information gap", "Silent grammar copying", "Only substitution drill"],
     correct: 0,
   },
   {
-    prompt: "What is the principle behind an upside-down lesson?",
-    options: ["Do the task first, then fill the language gap", "Remove all practice", "Teach only with tests"],
+    prompt: "What is the core logic of an upside-down lesson?",
+    options: ["Do the task first, then fill language gaps", "Skip practice completely", "Teach only through tests"],
     correct: 0,
   },
   {
     prompt: "Why are concept questions stronger than 'Do you understand'?",
-    options: ["They check understanding through evidence", "They take less time because there is no thinking", "They avoid meaning work"],
-    correct: 0,
-  },
-  {
-    prompt: "Which technique is recommended for accuracy revision of form details?",
-    options: ["Auctioning sentences", "Only storytelling", "Only brainstorming"],
-    correct: 0,
-  },
-  {
-    prompt: "What does the glossary say a task usually has?",
-    options: ["A real goal or outcome", "Only teacher explanation", "No learner communication"],
+    options: ["They check understanding through evidence", "They avoid meaning work", "They only test memory"],
     correct: 0,
   },
 ];
 
 export function TeacherGrammarHub() {
-  const [openBlock, setOpenBlock] = useState(blocks[0].id);
+  const [activeBlock, setActiveBlock] = useState(blocks[0].id);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [notes, setNotes] = useState("");
   const [testAnswers, setTestAnswers] = useState<Record<number, number>>({});
@@ -233,146 +236,153 @@ export function TeacherGrammarHub() {
     window.localStorage.setItem("teacher-grammar-notes", notes);
   }, [notes]);
 
-  const testScore = useMemo(() => {
-    return finalTest.reduce((score, item, index) => {
-      return score + (testAnswers[index] === item.correct ? 1 : 0);
-    }, 0);
-  }, [testAnswers]);
+  const activeContent = blocks.find((block) => block.id === activeBlock) ?? blocks[0];
+
+  const testScore = useMemo(
+    () => finalTest.reduce((score, item, index) => score + (testAnswers[index] === item.correct ? 1 : 0), 0),
+    [testAnswers],
+  );
 
   return (
     <main className="page-stack">
       <section className="teacher-hub-shell">
         <div className="teacher-hub-hero">
           <div>
-            <p className="eyebrow">Teacher Interactive Materials</p>
-            <h1>Teaching Grammar Basics</h1>
+            <p className="eyebrow">Teacher Hub</p>
+            <h1>Interactive materials for grammar teachers</h1>
             <p className="lead">
-              A new interactive page built from the ideas in <em>Basics - Teaching Grammar</em>: contextual presentation,
-              communicative practice, concept checking, active revision, and a usable teaching toolkit.
+              When a teacher opens this page, they should first see clear topic blocks. After choosing one, they get
+              a structured material page with key ideas, examples, quick checks, and space for notes.
             </p>
           </div>
           <div className="teacher-hub-stats">
             <article>
-              <span>Source</span>
-              <strong>Oxford teaching guide</strong>
-            </article>
-            <article>
-              <span>Focus</span>
-              <strong>Grammar methodology</strong>
-            </article>
-            <article>
               <span>Format</span>
-              <strong>Study + self-check + final test</strong>
+              <strong>Topic blocks</strong>
+            </article>
+            <article>
+              <span>Content</span>
+              <strong>Methodology materials</strong>
+            </article>
+            <article>
+              <span>Teacher Tool</span>
+              <strong>Notes + quiz</strong>
             </article>
           </div>
         </div>
 
-        <div className="teacher-hub-layout">
-          <aside className="teacher-hub-sidebar">
-            <p className="eyebrow">Sections</p>
-            {blocks.map((block) => (
-              <button
-                key={block.id}
-                type="button"
-                className={`teacher-side-link ${openBlock === block.id ? "active" : ""}`}
-                onClick={() => setOpenBlock(block.id)}
-              >
-                {block.title}
-              </button>
-            ))}
-            <a href="#final-test" className="teacher-side-anchor">
-              Final Test
-            </a>
-            <a href="#teacher-notes" className="teacher-side-anchor">
-              Notes
-            </a>
-          </aside>
+        <section className="teacher-topic-grid">
+          {blocks.map((block) => (
+            <button
+              key={block.id}
+              type="button"
+              className={`teacher-topic-card ${activeBlock === block.id ? "active" : ""}`}
+              onClick={() => setActiveBlock(block.id)}
+            >
+              <div className="teacher-topic-art">{block.imageLabel}</div>
+              <div>
+                <p className="eyebrow">Material Topic</p>
+                <h2>{block.title}</h2>
+                <p>{block.subtitle}</p>
+              </div>
+            </button>
+          ))}
+        </section>
 
-          <div className="teacher-hub-main">
-            {blocks.map((block) => (
-              <section
-                key={block.id}
-                id={block.id}
-                className={`teacher-module ${openBlock === block.id ? "expanded" : ""}`}
-              >
-                <button type="button" className="teacher-module-toggle" onClick={() => setOpenBlock(block.id)}>
-                  <div>
-                    <p className="eyebrow">Module</p>
-                    <h2>{block.title}</h2>
-                    <p>{block.subtitle}</p>
-                  </div>
-                  <span>{openBlock === block.id ? "−" : "+"}</span>
-                </button>
+        <section className="teacher-content-layout">
+          <div className="teacher-content-main">
+            <section className="teacher-lesson-header">
+              <div className="teacher-lesson-copy">
+                <p className="eyebrow">Selected Material</p>
+                <h2>{activeContent.title}</h2>
+                <p className="lead">{activeContent.summary}</p>
+              </div>
+              <div className="teacher-lesson-image">
+                <div className="teacher-lesson-image-tag">{activeContent.imageLabel}</div>
+              </div>
+            </section>
 
-                {openBlock === block.id ? (
-                  <div className="teacher-module-body">
-                    <div className="teacher-module-grid">
-                      <article className="teacher-card">
-                        <p className="eyebrow">Key Ideas</p>
-                        <ul className="exercise-list">
-                          {block.points.map((point) => (
-                            <li key={point}>{point}</li>
-                          ))}
-                        </ul>
-                      </article>
+            <section className="teacher-spotlight-card">
+              <p className="eyebrow">Teaching Spotlight</p>
+              <h3>{activeContent.spotlight}</h3>
+            </section>
 
-                      <article className="teacher-card">
-                        <p className="eyebrow">Practical Uses</p>
-                        <ul className="exercise-list">
-                          {block.examples.map((example) => (
-                            <li key={example}>{example}</li>
-                          ))}
-                        </ul>
-                      </article>
-                    </div>
+            <section className="teacher-module-grid">
+              <article className="teacher-card rich-teacher-card">
+                <p className="eyebrow">Key Ideas</p>
+                <ul className="exercise-list">
+                  {activeContent.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </article>
 
-                    <article className="teacher-card self-check-card">
-                      <p className="eyebrow">Self-Check</p>
-                      {block.checks.map((question, index) => {
-                        const key = `${block.id}-${index}`;
+              <article className="teacher-card rich-teacher-card">
+                <p className="eyebrow">Classroom Applications</p>
+                <ul className="exercise-list">
+                  {activeContent.examples.map((example) => (
+                    <li key={example}>{example}</li>
+                  ))}
+                </ul>
+              </article>
+            </section>
+
+            <section className="teacher-tip-strip">
+              {activeContent.tips.map((tip) => (
+                <span key={tip}>{tip}</span>
+              ))}
+            </section>
+
+            <section className="teacher-card self-check-card">
+              <div className="section-header-row">
+                <div>
+                  <p className="eyebrow">Self-Check</p>
+                  <h2>Questions after the material</h2>
+                </div>
+                <span className="section-badge">Quick understanding check</span>
+              </div>
+
+              {activeContent.checks.map((question, index) => {
+                const key = `${activeContent.id}-${index}`;
+                return (
+                  <div key={key} className="teacher-question">
+                    <h3>{question.prompt}</h3>
+                    <div className="teacher-option-list">
+                      {question.options.map((option, optionIndex) => {
+                        const selected = answers[key] === optionIndex;
+                        const isCorrect = optionIndex === question.correct;
+
                         return (
-                          <div key={key} className="teacher-question">
-                            <h3>{question.prompt}</h3>
-                            <div className="teacher-option-list">
-                              {question.options.map((option, optionIndex) => {
-                                const selected = answers[key] === optionIndex;
-                                const isCorrect = optionIndex === question.correct;
-
-                                return (
-                                  <button
-                                    key={option}
-                                    type="button"
-                                    className={`teacher-option ${selected ? "selected" : ""} ${
-                                      selected && isCorrect ? "correct" : ""
-                                    }`}
-                                    onClick={() => setAnswers((current) => ({ ...current, [key]: optionIndex }))}
-                                  >
-                                    {option}
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          </div>
+                          <button
+                            key={option}
+                            type="button"
+                            className={`teacher-option ${selected ? "selected" : ""} ${
+                              selected && isCorrect ? "correct" : ""
+                            }`}
+                            onClick={() => setAnswers((current) => ({ ...current, [key]: optionIndex }))}
+                          >
+                            {option}
+                          </button>
                         );
                       })}
-                    </article>
+                    </div>
                   </div>
-                ) : null}
-              </section>
-            ))}
+                );
+              })}
+            </section>
 
-            <section id="final-test" className="teacher-final-test">
+            <section className="teacher-final-test">
               <div className="section-header-row">
                 <div>
                   <p className="eyebrow">Final Test</p>
-                  <h2>Quick knowledge check for teachers</h2>
+                  <h2>Short methodology quiz</h2>
                 </div>
                 <span className="section-badge">
-                  Score: {testScore}/{finalTest.length}
+                  Score {testScore}/{finalTest.length}
                 </span>
               </div>
 
-              <div className="teacher-test-grid">
+              <div className="teacher-test-grid compact-test-grid">
                 {finalTest.map((item, index) => (
                   <article key={item.prompt} className="teacher-card">
                     <p className="eyebrow">Question {index + 1}</p>
@@ -393,24 +403,26 @@ export function TeacherGrammarHub() {
                 ))}
               </div>
             </section>
+          </div>
 
-            <section id="teacher-notes" className="teacher-notes-panel">
+          <aside className="teacher-notes-sidebar">
+            <section className="teacher-notes-panel teacher-notes-sticky">
               <div className="section-header-row">
                 <div>
-                  <p className="eyebrow">Teacher Notes</p>
-                  <h2>Personal notes while studying the material</h2>
+                  <p className="eyebrow">Notes</p>
+                  <h2>Teaching notes</h2>
                 </div>
                 <span className="section-badge">Saved automatically</span>
               </div>
               <textarea
                 value={notes}
                 onChange={(event) => setNotes(event.target.value)}
-                placeholder="Write your teaching reflections, lesson ideas, classroom adaptations, or examples you want to reuse..."
-                rows={10}
+                placeholder="Write your reflections, lesson ideas, adaptations, classroom reminders, or examples you want to reuse..."
+                rows={16}
               />
             </section>
-          </div>
-        </div>
+          </aside>
+        </section>
       </section>
     </main>
   );
