@@ -844,7 +844,7 @@ textarea {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .section-header-row h2 {
