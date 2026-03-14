@@ -766,6 +766,203 @@ textarea {
   border: 1px solid var(--border);
 }
 
+.teacher-hub-shell {
+  display: grid;
+  gap: 22px;
+}
+
+.teacher-hub-hero,
+.teacher-final-test,
+.teacher-notes-panel {
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.teacher-hub-hero {
+  grid-template-columns: 1.1fr 0.9fr;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 12%, var(--surface)) 0%, color-mix(in srgb, var(--surface-muted) 70%, transparent) 100%);
+}
+
+.teacher-hub-hero h1,
+.teacher-module-toggle h2,
+.teacher-final-test h2,
+.teacher-notes-panel h2,
+.teacher-question h3 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.teacher-hub-hero h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.94;
+}
+
+.teacher-hub-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.teacher-hub-stats article,
+.teacher-card {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 84%, var(--surface-muted) 16%);
+}
+
+.teacher-hub-stats span {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.teacher-hub-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.teacher-hub-sidebar {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, var(--surface-muted) 8%);
+  box-shadow: var(--shadow);
+}
+
+.teacher-side-link,
+.teacher-side-anchor {
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background: color-mix(in srgb, var(--surface-muted) 62%, transparent);
+  color: inherit;
+  text-align: left;
+}
+
+.teacher-side-link.active {
+  background: var(--surface-strong);
+  color: var(--text-inverse);
+}
+
+.teacher-hub-main {
+  display: grid;
+  gap: 18px;
+}
+
+.teacher-module {
+  display: grid;
+  gap: 0;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.teacher-module-toggle {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  width: 100%;
+  padding: 26px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.teacher-module-toggle h2,
+.teacher-final-test h2,
+.teacher-notes-panel h2 {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 0.96;
+}
+
+.teacher-module-toggle span {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.teacher-module-body {
+  display: grid;
+  gap: 18px;
+  padding: 0 26px 26px;
+}
+
+.teacher-module-grid,
+.teacher-test-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.self-check-card {
+  gap: 18px;
+}
+
+.teacher-question {
+  display: grid;
+  gap: 12px;
+}
+
+.teacher-question h3 {
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.teacher-option-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.teacher-option {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+}
+
+.teacher-option.selected {
+  background: color-mix(in srgb, var(--surface-muted) 88%, transparent);
+}
+
+.teacher-option.correct {
+  background: var(--surface-strong);
+  color: var(--text-inverse);
+}
+
+.teacher-notes-panel textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: inherit;
+  resize: vertical;
+}
+
 .lesson-page-shell {
   position: relative;
 }
@@ -1272,6 +1469,15 @@ textarea {
 }
 
 @media (max-width: 1080px) {
+  .teacher-hub-hero,
+  .teacher-hub-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .teacher-hub-sidebar {
+    position: static;
+  }
+
   .lesson-layout,
   .lesson-hero,
   .lesson-three-col,
@@ -1307,7 +1513,10 @@ textarea {
   .generated-grid,
   .lesson-pack-grid,
   .lesson-two-col,
-  .lesson-stat-grid {
+  .lesson-stat-grid,
+  .teacher-hub-stats,
+  .teacher-module-grid,
+  .teacher-test-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1353,7 +1562,10 @@ textarea {
   .printable-block,
   .lesson-two-col,
   .lesson-stat-grid,
-  .category-board {
+  .category-board,
+  .teacher-hub-stats,
+  .teacher-module-grid,
+  .teacher-test-grid {
     grid-template-columns: 1fr;
   }
 

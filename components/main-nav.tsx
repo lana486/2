@@ -8,6 +8,7 @@ const links = [
   { href: "/practice", label: "Practice" },
   { href: "/speaking-trainer", label: "Speaking Trainer" },
   { href: "/teachers", label: "Teachers" },
+  { href: "/teachers/grammar-basics", label: "Teacher Hub" },
   { href: "/pricing", label: "Pricing" },
   { href: "/dashboard", label: "Dashboard" },
 ];
