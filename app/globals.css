@@ -766,6 +766,389 @@ textarea {
   border: 1px solid var(--border);
 }
 
+.lesson-page-shell {
+  position: relative;
+}
+
+.lesson-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.lesson-sidebar {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--surface) 90%, var(--surface-muted) 10%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.lesson-nav-item {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-muted) 58%, transparent);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.lesson-nav-item:hover {
+  transform: translateX(4px);
+  background: color-mix(in srgb, var(--surface-muted) 76%, transparent);
+}
+
+.lesson-main {
+  display: grid;
+  gap: 22px;
+}
+
+.lesson-hero,
+.lesson-section-shell,
+.ai-chat-shell {
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.lesson-hero {
+  grid-template-columns: 1.1fr 0.9fr;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 84%, #ffffff 16%) 0%, color-mix(in srgb, var(--surface-muted) 78%, transparent) 100%);
+}
+
+.lesson-hero-copy h1,
+.section-header-row h2,
+.interactive-card h3,
+.score-panel strong,
+.progress-card h3 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.lesson-hero-copy h1 {
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+  line-height: 0.94;
+}
+
+.section-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.section-header-row h2 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 0.96;
+}
+
+.section-badge {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-muted) 76%, transparent);
+  font-size: 0.88rem;
+}
+
+.lesson-hero-side {
+  display: grid;
+  gap: 18px;
+}
+
+.lesson-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.lesson-stat-grid article,
+.score-panel,
+.progress-card {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.lesson-stat-grid span,
+.lesson-progress-label span {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.lesson-stat-grid strong {
+  font-size: 1.25rem;
+}
+
+.lesson-progress {
+  display: grid;
+  gap: 10px;
+}
+
+.lesson-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lesson-progress-bar {
+  height: 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-muted) 75%, transparent);
+  overflow: hidden;
+}
+
+.lesson-progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1f2f46 0%, #4e6688 100%);
+}
+
+.lesson-two-col,
+.lesson-three-col,
+.lesson-four-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.lesson-two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lesson-three-col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lesson-four-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.interactive-card {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 84%, var(--surface-muted) 16%);
+}
+
+.interactive-card h3 {
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  line-height: 0.98;
+}
+
+.dark-card {
+  background: var(--surface-strong);
+  color: var(--text-inverse);
+}
+
+.flashcard-card {
+  min-height: 360px;
+}
+
+.flashcard-face {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-height: 240px;
+  padding: 20px;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.06)),
+    color-mix(in srgb, var(--surface-muted) 72%, transparent);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.flashcard-face.is-flipped {
+  transform: rotateY(180deg);
+  box-shadow: 0 20px 40px rgba(31, 47, 70, 0.12);
+}
+
+.flashcard-face span,
+.tiny-note {
+  opacity: 0.72;
+  font-size: 0.92rem;
+}
+
+.exercise-actions,
+.gap-options,
+.ai-chat-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.match-grid,
+.highlight-tags,
+.progress-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.match-pill,
+.highlight-tags span,
+.progress-metrics span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-muted) 82%, transparent);
+}
+
+.category-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.category-board div {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.option-chip {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+}
+
+.option-chip.selected {
+  background: var(--surface-strong);
+  color: var(--text-inverse);
+}
+
+.diagram-strip,
+.sentence-builder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.diagram-strip span,
+.sentence-builder span {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-muted) 82%, transparent);
+}
+
+.audio-bar {
+  height: 62px;
+  padding: 12px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.audio-bar span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(90deg, #1f2f46 0 8px, transparent 8px 16px),
+    linear-gradient(90deg, rgba(31, 47, 70, 0.12), rgba(31, 47, 70, 0.32));
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.reading-card {
+  min-height: 280px;
+}
+
+.exercise-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.image-block-placeholder {
+  min-height: 180px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(31, 47, 70, 0.12), rgba(31, 47, 70, 0.02)),
+    linear-gradient(135deg, #dcd2c2 0%, #efe8dc 100%);
+  display: grid;
+  place-items: center;
+  color: #1f2f46;
+}
+
+.arena-card {
+  min-height: 220px;
+}
+
+.score-panel strong {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.ai-chat-shell {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.ai-chat-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ai-chat-modes span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-muted) 82%, transparent);
+}
+
+.ai-chat-window {
+  display: grid;
+  gap: 12px;
+}
+
+.ai-chat-input input,
+.interactive-card textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: transparent;
+  color: inherit;
+}
+
+.interactive-card textarea {
+  resize: vertical;
+}
+
+.floating-ai-button {
+  position: fixed;
+  right: 28px;
+  bottom: 90px;
+  z-index: 25;
+  width: 62px;
+  height: 62px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-strong);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow);
+}
+
 .generated-meta article {
   display: grid;
   gap: 8px;
@@ -889,6 +1272,17 @@ textarea {
 }
 
 @media (max-width: 1080px) {
+  .lesson-layout,
+  .lesson-hero,
+  .lesson-three-col,
+  .lesson-four-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-sidebar {
+    position: static;
+  }
+
   .topbar {
     grid-template-columns: 1fr;
     border-radius: 28px;
@@ -911,7 +1305,9 @@ textarea {
   .speaking-panels,
   .generated-meta,
   .generated-grid,
-  .lesson-pack-grid {
+  .lesson-pack-grid,
+  .lesson-two-col,
+  .lesson-stat-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -954,7 +1350,10 @@ textarea {
   .generated-grid,
   .generated-notes,
   .lesson-pack-grid,
-  .printable-block {
+  .printable-block,
+  .lesson-two-col,
+  .lesson-stat-grid,
+  .category-board {
     grid-template-columns: 1fr;
   }
 

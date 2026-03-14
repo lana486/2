@@ -226,9 +226,9 @@ export function GeneratedLesson() {
           <Link href="/lesson-studio" className="button button-secondary">
             Edit Input
           </Link>
-          <button type="button" className="button button-primary">
+          <Link href="/lesson-studio/builder" className="button button-primary">
             Continue To Full Lesson Builder
-          </button>
+          </Link>
         </div>
       </section>
     </main>
