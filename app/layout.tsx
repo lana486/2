@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { DM_Sans, Syne } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MainNav } from "@/components/main-nav";
 
-const dmSans = DM_Sans({
+const nunitoSansBody = Nunito_Sans({
   variable: "--font-body",
   subsets: ["latin"],
 });
 
-const syne = Syne({
+const nunitoSansDisplay = Nunito_Sans({
   variable: "--font-display",
   subsets: ["latin"],
 });
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${syne.variable}`}>
+      <body className={`${nunitoSansBody.variable} ${nunitoSansDisplay.variable}`}>
         <div className="site-shell">
           <MainNav />
           <ThemeToggle />

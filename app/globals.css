@@ -36,7 +36,7 @@ body {
   color: var(--text);
   font-family: var(--font-body), sans-serif;
   font-weight: 400;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   transition: background 250ms ease, color 250ms ease;
 }
 
@@ -181,8 +181,8 @@ input {
   margin: 0;
   font-family: var(--font-display), sans-serif;
   font-size: clamp(3rem, 7vw, 6.8rem);
-  line-height: 0.92;
-  letter-spacing: -0.045em;
+  line-height: 0.94;
+  letter-spacing: -0.06em;
   text-transform: uppercase;
 }
 
@@ -190,7 +190,7 @@ input {
   margin: 18px 0 0;
   max-width: 520px;
   font-size: clamp(1.25rem, 2vw, 2rem);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .lead,
@@ -211,7 +211,7 @@ input {
   margin: 0 0 16px;
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
