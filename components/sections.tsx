@@ -242,6 +242,11 @@ export function TestimonialGrid() {
 export function PricingCards() {
   const plans = [
     {
+      name: "Free",
+      price: "$0",
+      text: "Basic AI tutor access, starter exercises, limited speaking practice, and a simple weekly plan for trying the platform.",
+    },
+    {
       name: "Starter",
       price: "$19",
       text: "AI tutor, practice modules, weekly plan, and vocabulary memory system.",
@@ -261,7 +266,7 @@ export function PricingCards() {
   return (
     <section className="pricing-grid">
       {plans.map((plan, index) => (
-        <article key={plan.name} className={`pricing-card ${index === 1 ? "featured" : ""}`}>
+        <article key={plan.name} className={`pricing-card ${index === 2 ? "featured" : ""}`}>
           <p className="eyebrow">{plan.name}</p>
           <h3>{plan.price}</h3>
           <p>{plan.text}</p>
