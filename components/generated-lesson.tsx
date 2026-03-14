@@ -18,6 +18,34 @@ type Draft = {
 
 function buildLesson(draft: Draft) {
   const objective = `Students will use English confidently around "${draft.topic}" through structured speaking, guided language focus, and contextual practice.`;
+  const vocabulary = [
+    `Core topic language related to ${draft.topic}`,
+    "Useful collocations for natural speaking",
+    "High-frequency classroom support phrases",
+    "Functional expressions for pair discussion",
+  ];
+  const grammar = [
+    "Target structure explained in short, teacher-friendly steps",
+    "Model sentences connected to the lesson topic",
+    "Common learner mistakes to anticipate and correct",
+  ];
+  const speakingTasks = [
+    `Pair role-play connected to ${draft.topic}`,
+    "Prompt cards for guided discussion",
+    "Fluency round with timed speaking turns",
+  ];
+  const homework = [
+    "Short written reflection using target vocabulary",
+    "Audio or speaking task for homework follow-up",
+    "Review worksheet with 6 to 8 focused questions",
+  ];
+  const printable = [
+    "Lesson objective and timing",
+    "Vocabulary bank",
+    "Grammar focus and examples",
+    "Speaking prompts",
+    "Homework block",
+  ];
 
   return {
     objective,
@@ -43,6 +71,11 @@ function buildLesson(draft: Draft) {
         text: "Finish with a recap, error review, self-assessment prompt, and one short follow-up task for independent practice.",
       },
     ],
+    vocabulary,
+    grammar,
+    speakingTasks,
+    homework,
+    printable,
   };
 }
 
@@ -110,6 +143,63 @@ export function GeneratedLesson() {
             </article>
           ))}
         </div>
+
+        <section className="lesson-pack-grid">
+          <article className="lesson-pack-card">
+            <p className="eyebrow">Vocabulary</p>
+            <h2>Target language set</h2>
+            <ul>
+              {lesson.vocabulary.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="lesson-pack-card">
+            <p className="eyebrow">Grammar</p>
+            <h2>Language focus</h2>
+            <ul>
+              {lesson.grammar.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="lesson-pack-card">
+            <p className="eyebrow">Speaking Tasks</p>
+            <h2>Production stage</h2>
+            <ul>
+              {lesson.speakingTasks.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="lesson-pack-card">
+            <p className="eyebrow">Homework</p>
+            <h2>Follow-up practice</h2>
+            <ul>
+              {lesson.homework.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section className="printable-block">
+          <div className="printable-copy">
+            <p className="eyebrow">Printable Structure</p>
+            <h2>One-page teacher handout structure</h2>
+            <p>
+              This condensed format is designed for printing or exporting later as a clean lesson outline for classroom use.
+            </p>
+          </div>
+          <div className="printable-list">
+            {lesson.printable.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </section>
 
         <section className="generated-notes">
           <div>
