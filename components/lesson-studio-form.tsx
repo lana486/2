@@ -16,6 +16,7 @@ type LessonCard = {
   duration: string;
   focus: string;
   imageLabel: string;
+  colorClass: string;
 };
 
 const lessonFrames = [
@@ -43,6 +44,7 @@ const lessonCards: LessonCard[] = [
     duration: "40 min",
     focus: "going to, will, personal arrangements",
     imageLabel: "Future timeline",
+    colorClass: "studio-card-blue",
   },
   {
     title: "Restaurant Role Play",
@@ -51,6 +53,7 @@ const lessonCards: LessonCard[] = [
     duration: "35 min",
     focus: "ordering food, polite requests, confidence",
     imageLabel: "Cafe dialogue",
+    colorClass: "studio-card-green",
   },
   {
     title: "Travel Problems And Solutions",
@@ -59,6 +62,7 @@ const lessonCards: LessonCard[] = [
     duration: "45 min",
     focus: "airport issues, problem solving, useful phrases",
     imageLabel: "Airport board",
+    colorClass: "studio-card-sand",
   },
   {
     title: "Professional Emails",
@@ -67,6 +71,7 @@ const lessonCards: LessonCard[] = [
     duration: "50 min",
     focus: "email tone, writing structure, formal vocabulary",
     imageLabel: "Inbox layout",
+    colorClass: "studio-card-purple",
   },
   {
     title: "IELTS Speaking Part 2 Builder",
@@ -75,6 +80,7 @@ const lessonCards: LessonCard[] = [
     duration: "55 min",
     focus: "fluency, coherence, timing, topic expansion",
     imageLabel: "Cue card",
+    colorClass: "studio-card-blue",
   },
   {
     title: "Daily Routines Vocabulary",
@@ -83,6 +89,7 @@ const lessonCards: LessonCard[] = [
     duration: "30 min",
     focus: "verbs, time phrases, repetition practice",
     imageLabel: "Routine cards",
+    colorClass: "studio-card-green",
   },
 ];
 
@@ -136,14 +143,30 @@ export function LessonStudioForm() {
 
   return (
     <section className="studio-shell">
-      <div className="studio-intro">
-        <p className="eyebrow">Lesson Studio</p>
-        <h1>Browse lesson topics, filter by level, and build your next class.</h1>
-        <p className="lead">
-          Teachers can first browse ready-made lesson directions by topic and level. Then they can adapt one of them or
-          create a custom AI lesson brief below.
-        </p>
-      </div>
+      <section className="studio-hero-panel">
+        <div className="studio-intro">
+          <p className="eyebrow">Lesson Studio</p>
+          <h1>Discover ready-made lesson directions for your next class.</h1>
+          <p className="lead">
+            Filter by topic and level, browse polished lesson cards, and then send the selected idea into the builder
+            below for AI adaptation.
+          </p>
+          <div className="studio-hero-stats">
+            <span>120+ lesson directions</span>
+            <span>AI-ready formats</span>
+            <span>Teacher workflows</span>
+          </div>
+        </div>
+        <div className="studio-hero-visual">
+          <div className="studio-hero-window studio-hero-window-main" />
+          <div className="studio-hero-window studio-hero-window-side" />
+          <div className="studio-hero-chip-row">
+            <span>Grammar</span>
+            <span>Speaking</span>
+            <span>Writing</span>
+          </div>
+        </div>
+      </section>
 
       <section className="studio-browser">
         <div className="section-header-row">
@@ -152,6 +175,12 @@ export function LessonStudioForm() {
             <h2>Find a lesson direction by topic and level</h2>
           </div>
           <span className="section-badge">{filteredLessons.length} lessons found</span>
+        </div>
+
+        <div className="studio-toolbar">
+          <div className="studio-search-lite">
+            <input type="text" value="Search lesson types, outcomes, or grammar targets" readOnly />
+          </div>
         </div>
 
         <div className="studio-filter-groups">
@@ -191,17 +220,20 @@ export function LessonStudioForm() {
         <div className="studio-lesson-grid">
           {filteredLessons.map((lesson) => (
             <article key={`${lesson.title}-${lesson.level}`} className="studio-lesson-card">
-              <div className="studio-lesson-art">{lesson.imageLabel}</div>
+              <div className={`studio-lesson-art ${lesson.colorClass}`}>
+                <span className="studio-lesson-art-badge">{lesson.topic}</span>
+                <strong>{lesson.imageLabel}</strong>
+              </div>
               <div className="studio-lesson-meta">
                 <div className="studio-lesson-topline">
-                  <span>{lesson.topic}</span>
                   <span>{lesson.level}</span>
+                  <span>{lesson.duration}</span>
                 </div>
                 <h3>{lesson.title}</h3>
                 <p>{lesson.focus}</p>
                 <div className="studio-lesson-footer">
-                  <strong>{lesson.duration}</strong>
-                  <button type="button" className="button button-secondary" onClick={() => useLessonCard(lesson)}>
+                  <strong>Ready to adapt</strong>
+                  <button type="button" className="button learnflow-secondary" onClick={() => useLessonCard(lesson)}>
                     Use In Builder
                   </button>
                 </div>
