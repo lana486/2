@@ -3,20 +3,28 @@ import Link from "next/link";
 export default function LoginPage() {
   return (
     <main className="page-stack">
-      <section className="auth-shell">
-        <div className="auth-panel auth-brand">
-          <p className="eyebrow">Welcome Back</p>
-          <h1>Access your AI classroom.</h1>
-          <p>
-            Continue lessons, reopen tutor conversations, and review your weekly learning plan across devices.
+      <section className="learnflow-page-hero">
+        <div>
+          <p className="eyebrow">Sign In</p>
+          <h1>Access your teaching workspace.</h1>
+          <p className="lead">
+            Continue building lessons, open teacher materials, and manage your AI-supported classroom flows.
           </p>
+        </div>
+        <div className="learnflow-page-hero-art learnflow-art-grid" />
+      </section>
+
+      <section className="learnflow-auth-shell">
+        <div className="learnflow-auth-panel learnflow-auth-brand">
+          <p className="eyebrow">Workspace Access</p>
+          <h2>Everything in one place: lesson studio, teacher hub, templates, and AI support.</h2>
           <div className="auth-metrics">
-            <span>AI Tutor</span>
-            <span>Courses</span>
-            <span>Speaking</span>
+            <span>Lesson Studio</span>
+            <span>Teacher Hub</span>
+            <span>Interactive Materials</span>
           </div>
         </div>
-        <div className="auth-panel auth-form">
+        <div className="learnflow-auth-panel learnflow-auth-form">
           <h2>Login / Register</h2>
           <form className="form-grid">
             <label>
@@ -27,7 +35,7 @@ export default function LoginPage() {
               Password
               <input type="password" placeholder="••••••••" />
             </label>
-            <button type="submit" className="button button-primary">
+            <button type="submit" className="button learnflow-primary">
               Continue
             </button>
           </form>

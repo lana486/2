@@ -12,7 +12,8 @@ export function MainNav() {
   return (
     <header className="topbar">
       <Link href="/" className="brand-mark">
-        EN.AI
+        <span className="brand-badge">◧</span>
+        <span>LearnFlow</span>
       </Link>
       <nav className="nav-links">
         {links.map((link) => (
@@ -21,8 +22,8 @@ export function MainNav() {
           </Link>
         ))}
       </nav>
-      <Link href="/login" className="button button-secondary">
-        Login
+      <Link href="/login" className="button learnflow-primary topbar-cta">
+        Get Started
       </Link>
     </header>
   );
