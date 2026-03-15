@@ -248,33 +248,43 @@ export function PricingCards() {
       name: "Free",
       price: "$0",
       text: "Basic AI tutor access, starter exercises, limited speaking practice, and a simple weekly plan for trying the platform.",
+      note: "For trying the workflow",
+      cta: "Start Free",
     },
     {
       name: "Starter",
       price: "$19",
       text: "AI tutor, practice modules, weekly plan, and vocabulary memory system.",
+      note: "For solo teachers",
+      cta: "Choose Starter",
     },
     {
       name: "Pro",
       price: "$49",
       text: "Everything in Starter plus speaking trainer, lesson generator, and live class support.",
+      note: "Most complete toolkit",
+      cta: "Choose Pro",
+      featured: true,
     },
     {
       name: "Teacher",
-      price: "$89",
-      text: "Student management, course tools, AI insights, summaries, and hybrid classroom workflows.",
+      price: "Custom",
+      text: "Student management, shared content libraries, AI insights, summaries, and hybrid classroom workflows for active teaching teams.",
+      note: "For schools and teaching teams",
+      cta: "Talk To Us",
     },
   ];
 
   return (
     <section className="pricing-grid">
-      {plans.map((plan, index) => (
-        <article key={plan.name} className={`pricing-card ${index === 2 ? "featured" : ""}`}>
+      {plans.map((plan) => (
+        <article key={plan.name} className={`pricing-card pricing-card-refined ${plan.featured ? "featured" : ""}`}>
           <p className="eyebrow">{plan.name}</p>
+          <span className="pricing-note">{plan.note}</span>
           <h3>{plan.price}</h3>
           <p>{plan.text}</p>
-          <Link href="/login" className="button button-secondary">
-            Choose Plan
+          <Link href="/login" className={`button ${plan.featured ? "learnflow-white-button" : "learnflow-secondary"}`}>
+            {plan.cta}
           </Link>
         </article>
       ))}

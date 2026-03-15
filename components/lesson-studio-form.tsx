@@ -19,6 +19,16 @@ type LessonCard = {
   colorClass: string;
 };
 
+type FeaturedTemplate = {
+  title: string;
+  meta: string;
+  text: string;
+  tags: string[];
+  author: string;
+  rating: string;
+  colorClass: string;
+};
+
 const lessonFrames = [
   "Presentation -> Practice -> Production",
   "Warm-up -> Guided discovery -> Communication",
@@ -35,6 +45,7 @@ const methodologies = [
 
 const topicFilters = ["All", "Speaking", "Grammar", "Vocabulary", "Business", "Travel", "Exam Prep"] as const;
 const levelFilters = ["All", "A1", "A2", "B1", "B2", "C1"] as const;
+const popularFilters = ["Interactive", "Worksheets", "Presentations", "Grammar", "Reading"] as const;
 
 const lessonCards: LessonCard[] = [
   {
@@ -90,6 +101,36 @@ const lessonCards: LessonCard[] = [
     focus: "verbs, time phrases, repetition practice",
     imageLabel: "Routine cards",
     colorClass: "studio-card-green",
+  },
+];
+
+const featuredTemplates: FeaturedTemplate[] = [
+  {
+    title: "Future Forms Workshop",
+    meta: "English · A2-B1 · 45 min",
+    text: "A ready-made lesson with timeline visuals, guided grammar discovery, and speaking practice.",
+    tags: ["future forms", "visual learning", "interactive"],
+    author: "Olena Koval",
+    rating: "4.9",
+    colorClass: "studio-card-blue",
+  },
+  {
+    title: "Travel English Essentials",
+    meta: "Speaking · A1-A2 · 40 min",
+    text: "Role-play driven material for airports, hotels, directions, and survival phrases.",
+    tags: ["travel", "role play", "speaking"],
+    author: "Mila Brown",
+    rating: "4.8",
+    colorClass: "studio-card-green",
+  },
+  {
+    title: "Professional Email Builder",
+    meta: "Writing · B1-B2 · 60 min",
+    text: "Structured writing lesson with tone guidance, model phrases, and AI correction prompts.",
+    tags: ["business", "writing", "email"],
+    author: "James Wilson",
+    rating: "4.7",
+    colorClass: "studio-card-purple",
   },
 ];
 
@@ -174,8 +215,67 @@ export function LessonStudioForm() {
             <p className="eyebrow">Lesson Filters</p>
             <h2>Find a lesson direction by topic and level</h2>
           </div>
-          <span className="section-badge">{filteredLessons.length} lessons found</span>
+          <p className="studio-results-note">{filteredLessons.length} lesson directions match your filters right now.</p>
         </div>
+
+        <section className="studio-market-search">
+          <div className="learnflow-search-copy">
+            <p className="eyebrow">Find Materials</p>
+            <h2>Find the perfect material for your next class</h2>
+          </div>
+          <div className="learnflow-searchbar">
+            <input
+              type="text"
+              value="Search subjects, topics, or standards (e.g., Future forms for speaking lessons)"
+              readOnly
+            />
+            <button type="button" className="button learnflow-primary">
+              Search
+            </button>
+          </div>
+          <div className="learnflow-pill-row">
+            <span className="learnflow-pill-label">Popular filters:</span>
+            {popularFilters.map((pill) => (
+              <span key={pill} className="learnflow-pill">
+                {pill}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section className="studio-featured-content">
+          <div className="section-header-row">
+            <div>
+              <p className="eyebrow">Featured Content</p>
+              <h2>Ready-made templates to save you hours</h2>
+            </div>
+            <span className="studio-inline-note">Use one as-is or send it into the AI builder below.</span>
+          </div>
+
+          <div className="learnflow-template-grid studio-template-grid">
+            {featuredTemplates.map((card) => (
+              <article key={card.title} className="learnflow-template-card">
+                <div className={`learnflow-template-top ${card.colorClass}`}>
+                  <span className="learnflow-template-badge">Premium</span>
+                  <h3>{card.title}</h3>
+                </div>
+                <div className="learnflow-template-body">
+                  <p className="learnflow-template-meta">{card.meta}</p>
+                  <p>{card.text}</p>
+                  <div className="learnflow-tag-row">
+                    {card.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <div className="learnflow-template-footer">
+                    <strong>{card.author}</strong>
+                    <span>{card.rating}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <div className="studio-toolbar">
           <div className="studio-search-lite">
