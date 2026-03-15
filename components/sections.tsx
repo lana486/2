@@ -37,6 +37,9 @@ export function EditorialHero({
         </div>
       </div>
       <div className="hero-visual">
+        <div className="hero-cutout hero-cutout-skyline" aria-hidden="true" />
+        <div className="hero-cutout hero-cutout-liberty" aria-hidden="true" />
+        <div className="hero-cutout hero-cutout-bigben" aria-hidden="true" />
         <div className="globe-orbit">
           <div className="globe-core" />
           <span className="globe-ring ring-a" />
