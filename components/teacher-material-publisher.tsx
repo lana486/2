@@ -144,7 +144,7 @@ export function TeacherMaterialPublisher() {
           <div className="teacher-publisher-stat-grid">
             <article>
               <span>Flow</span>
-              <strong>Create -> Publish -> Review in Hub</strong>
+              <strong>Create {"->"} Publish {"->"} Review in Hub</strong>
             </article>
             <article>
               <span>Storage</span>
