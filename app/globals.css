@@ -1320,6 +1320,19 @@ textarea {
   gap: 14px;
 }
 
+.teacher-hub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.teacher-hub-inline-note {
+  color: #6f7e99;
+  font-size: 0.96rem;
+}
+
 .teacher-hub-stats article,
 .teacher-card {
   display: grid;
@@ -1631,6 +1644,140 @@ textarea {
 
 .compact-test-grid .teacher-card {
   min-height: 220px;
+}
+
+.teacher-publisher-shell {
+  display: grid;
+  gap: 22px;
+}
+
+.teacher-publisher-hero,
+.teacher-publisher-form,
+.teacher-publisher-preview {
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 32px;
+  border: 1px solid rgba(31, 47, 70, 0.08);
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(31, 47, 70, 0.08);
+}
+
+.teacher-publisher-hero {
+  grid-template-columns: 1.05fr 0.95fr;
+  background:
+    radial-gradient(circle at 25% 72%, rgba(132, 177, 255, 0.16), transparent 24%),
+    radial-gradient(circle at 68% 18%, rgba(129, 186, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+}
+
+.teacher-publisher-hero h1,
+.teacher-publisher-form h2,
+.teacher-publisher-preview h2 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.07em;
+  color: #17253b;
+}
+
+.teacher-publisher-hero h1 {
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 0.92;
+}
+
+.teacher-publisher-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.teacher-publisher-stat-grid article {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(31, 47, 70, 0.08);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 14px 30px rgba(31, 47, 70, 0.06);
+}
+
+.teacher-publisher-stat-grid span {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.teacher-publisher-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.teacher-publisher-form {
+  align-content: start;
+}
+
+.teacher-publisher-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.teacher-publisher-grid-wide {
+  align-items: start;
+}
+
+.teacher-publisher-form label,
+.teacher-builder-question-card label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.teacher-publisher-form input,
+.teacher-publisher-form select,
+.teacher-publisher-form textarea,
+.teacher-builder-question-card input,
+.teacher-builder-question-card select {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(31, 47, 70, 0.08);
+  background: #f7f9fd;
+  color: inherit;
+}
+
+.teacher-publisher-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.teacher-publisher-question-block,
+.teacher-publisher-preview {
+  display: grid;
+  gap: 18px;
+}
+
+.teacher-publisher-question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.teacher-builder-question-card {
+  align-content: start;
+}
+
+.teacher-topic-card-preview {
+  pointer-events: none;
+}
+
+button[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .learnflow-hero,
@@ -2650,6 +2797,8 @@ textarea {
   }
 
   .teacher-hub-hero,
+  .teacher-publisher-hero,
+  .teacher-publisher-layout,
   .teacher-hub-layout,
   .teacher-content-layout,
   .teacher-lesson-header {
@@ -2701,10 +2850,12 @@ textarea {
   .lesson-two-col,
   .lesson-stat-grid,
   .teacher-hub-stats,
+  .teacher-publisher-stat-grid,
   .teacher-module-grid,
   .teacher-test-grid,
   .teacher-topic-grid,
-  .studio-lesson-grid {
+  .studio-lesson-grid,
+  .teacher-publisher-question-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2804,10 +2955,13 @@ textarea {
   .lesson-stat-grid,
   .category-board,
   .teacher-hub-stats,
+  .teacher-publisher-stat-grid,
   .teacher-module-grid,
   .teacher-test-grid,
   .teacher-topic-grid,
-  .studio-lesson-grid {
+  .studio-lesson-grid,
+  .teacher-publisher-grid,
+  .teacher-publisher-question-grid {
     grid-template-columns: 1fr;
   }
 
