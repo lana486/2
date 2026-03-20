@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 
 import {
   TEACHER_ACTIVE_MATERIAL_KEY,
-  TEACHER_MATERIALS_STORAGE_KEY,
   createPublishedMaterialId,
-  normalizeTeacherMaterials,
+  getTeacherAuthorId,
+  readPublishedTeacherMaterials,
+  savePublishedTeacherMaterials,
   teacherCoverOptions,
   teacherTagOptions,
   type TeacherMaterial,
@@ -66,6 +67,7 @@ export function TeacherMaterialPublisher() {
   }
 
   function publishMaterial() {
+    const authorId = getTeacherAuthorId(window.localStorage);
     const material: TeacherMaterial = {
       id: createPublishedMaterialId(),
       title: title.trim(),
@@ -76,21 +78,13 @@ export function TeacherMaterialPublisher() {
       tags: selectedTags,
       images,
       source: "published",
+      authorId,
     };
 
-    const current = window.localStorage.getItem(TEACHER_MATERIALS_STORAGE_KEY);
-    let existing: TeacherMaterial[] = [];
-
-    if (current) {
-      try {
-        existing = normalizeTeacherMaterials(JSON.parse(current));
-      } catch {
-        window.localStorage.removeItem(TEACHER_MATERIALS_STORAGE_KEY);
-      }
-    }
+    const existing = readPublishedTeacherMaterials(window.localStorage, authorId);
     const next = [material, ...existing];
 
-    window.localStorage.setItem(TEACHER_MATERIALS_STORAGE_KEY, JSON.stringify(next));
+    savePublishedTeacherMaterials(window.localStorage, next);
     window.sessionStorage.setItem(TEACHER_ACTIVE_MATERIAL_KEY, material.id);
     router.push("/teachers/grammar-basics");
   }

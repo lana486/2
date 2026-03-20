@@ -13,6 +13,7 @@ export type TeacherMaterial = {
   tags: string[];
   images: TeacherMaterialImage[];
   source: "core" | "published";
+  authorId?: string;
 };
 
 type LegacyTeacherMaterial = {
@@ -30,6 +31,7 @@ type LegacyTeacherMaterial = {
 
 export const TEACHER_MATERIALS_STORAGE_KEY = "teacher-hub-published-materials";
 export const TEACHER_ACTIVE_MATERIAL_KEY = "teacher-hub-active-material";
+export const TEACHER_AUTHOR_ID_KEY = "teacher-hub-author-id";
 
 export const teacherTagOptions = [
   "Grammar",
@@ -146,6 +148,29 @@ export function createPublishedMaterialId() {
   return `published-${Date.now()}`;
 }
 
+export function createTeacherAuthorId() {
+  if (typeof globalThis !== "undefined" && typeof globalThis.crypto?.randomUUID === "function") {
+    return `author-${globalThis.crypto.randomUUID()}`;
+  }
+
+  return `author-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+export function getTeacherAuthorId(storage: Pick<Storage, "getItem" | "setItem">) {
+  const savedAuthorId = storage.getItem(TEACHER_AUTHOR_ID_KEY);
+  if (savedAuthorId) {
+    return savedAuthorId;
+  }
+
+  const nextAuthorId = createTeacherAuthorId();
+  storage.setItem(TEACHER_AUTHOR_ID_KEY, nextAuthorId);
+  return nextAuthorId;
+}
+
+export function getTeacherMaterialHref(materialId: string) {
+  return `/teachers/grammar-basics/${encodeURIComponent(materialId)}`;
+}
+
 export function normalizeTeacherMaterial(input: unknown): TeacherMaterial | null {
   if (!input || typeof input !== "object") {
     return null;
@@ -176,6 +201,7 @@ export function normalizeTeacherMaterial(input: unknown): TeacherMaterial | null
           )
         : [],
       source: material.source === "published" ? "published" : "core",
+      authorId: typeof material.authorId === "string" && material.authorId.trim() ? material.authorId.trim() : undefined,
     };
   }
 
@@ -211,6 +237,7 @@ export function normalizeTeacherMaterial(input: unknown): TeacherMaterial | null
     tags: [],
     images: [],
     source: material.source === "published" ? "published" : "core",
+    authorId: typeof material.authorId === "string" && material.authorId.trim() ? material.authorId.trim() : undefined,
   };
 }
 
@@ -220,4 +247,50 @@ export function normalizeTeacherMaterials(input: unknown): TeacherMaterial[] {
   }
 
   return input.map(normalizeTeacherMaterial).filter((material): material is TeacherMaterial => material !== null);
+}
+
+export function assignTeacherMaterialOwnership(materials: TeacherMaterial[], authorId: string) {
+  let hasChanges = false;
+
+  const nextMaterials = materials.map((material) => {
+    if (material.source === "published" && !material.authorId) {
+      hasChanges = true;
+      return { ...material, authorId };
+    }
+
+    return material;
+  });
+
+  return { materials: nextMaterials, hasChanges };
+}
+
+export function savePublishedTeacherMaterials(
+  storage: Pick<Storage, "setItem">,
+  materials: TeacherMaterial[],
+) {
+  storage.setItem(TEACHER_MATERIALS_STORAGE_KEY, JSON.stringify(materials));
+}
+
+export function readPublishedTeacherMaterials(
+  storage: Pick<Storage, "getItem" | "setItem" | "removeItem">,
+  authorId: string,
+) {
+  const savedMaterials = storage.getItem(TEACHER_MATERIALS_STORAGE_KEY);
+  if (!savedMaterials) {
+    return [];
+  }
+
+  try {
+    const normalizedMaterials = normalizeTeacherMaterials(JSON.parse(savedMaterials));
+    const { materials, hasChanges } = assignTeacherMaterialOwnership(normalizedMaterials, authorId);
+
+    if (hasChanges) {
+      savePublishedTeacherMaterials(storage, materials);
+    }
+
+    return materials;
+  } catch {
+    storage.removeItem(TEACHER_MATERIALS_STORAGE_KEY);
+    return [];
+  }
 }

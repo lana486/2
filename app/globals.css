@@ -1707,10 +1707,32 @@ textarea {
   box-shadow: 0 18px 40px rgba(31, 47, 70, 0.08);
 }
 
+.teacher-topic-card-clickable {
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.teacher-topic-card-clickable:hover,
+.teacher-topic-card-clickable:focus-visible {
+  border-color: rgba(79, 118, 196, 0.34);
+  transform: translateY(-2px);
+  box-shadow: 0 22px 42px rgba(79, 118, 196, 0.14);
+  outline: none;
+}
+
 .teacher-topic-card.active {
   border-color: rgba(79, 118, 196, 0.34);
   transform: translateY(-2px);
   box-shadow: 0 22px 42px rgba(79, 118, 196, 0.14);
+}
+
+.teacher-topic-card-body,
+.teacher-topic-card-copy {
+  display: grid;
+  gap: 12px;
 }
 
 .teacher-topic-card h2,
@@ -1741,6 +1763,43 @@ textarea {
   background: #eef3fb;
   color: #34496d;
   font-size: 0.9rem;
+}
+
+.teacher-card-actions,
+.teacher-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.teacher-card-open-link {
+  color: #3d63af;
+  font-weight: 600;
+}
+
+.teacher-card-delete {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b24e5b;
+  font-weight: 600;
+}
+
+.teacher-danger-button {
+  border: 1px solid rgba(178, 78, 91, 0.18);
+  background: #fff3f4;
+  color: #9f3343;
+  box-shadow: none;
+}
+
+.teacher-card-delete:hover,
+.teacher-card-delete:focus-visible,
+.teacher-danger-button:hover,
+.teacher-danger-button:focus-visible {
+  text-decoration: underline;
+  outline: none;
 }
 
 .teacher-topic-art,
@@ -1813,6 +1872,10 @@ textarea {
   border: 1px solid rgba(31, 47, 70, 0.08);
   background: #fff;
   box-shadow: 0 18px 40px rgba(31, 47, 70, 0.08);
+}
+
+.teacher-article-header {
+  align-items: center;
 }
 
 .teacher-lesson-copy h2 {
