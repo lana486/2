@@ -333,11 +333,19 @@ textarea {
 }
 
 .studio-shell {
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+  align-self: stretch;
   padding: 0;
   background: transparent;
   border: 0;
   box-shadow: none;
   overflow: visible;
+}
+
+.studio-shell > * {
+  width: 100%;
 }
 
 .hero-slide {
