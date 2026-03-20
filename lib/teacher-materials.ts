@@ -9,6 +9,7 @@ export type TeacherMaterial = {
   description: string;
   article: string;
   coverLabel: string;
+  coverStyle: string;
   tags: string[];
   images: TeacherMaterialImage[];
   source: "core" | "published";
@@ -46,6 +47,15 @@ export const teacherTagOptions = [
   "B1-B2",
 ] as const;
 
+export const teacherCoverOptions = [
+  { id: "sky", label: "Soft Blue" },
+  { id: "forest", label: "Forest Green" },
+  { id: "plum", label: "Deep Plum" },
+  { id: "sand", label: "Warm Sand" },
+  { id: "midnight", label: "Midnight Navy" },
+  { id: "coral", label: "Coral Glow" },
+] as const;
+
 export const defaultTeacherMaterials: TeacherMaterial[] = [
   {
     id: "context",
@@ -61,6 +71,7 @@ One of the most useful classroom habits is to delay the full explanation for a m
 
 In practice, this means we do not begin with "Today we learn the future tense." We begin with a plan, a schedule, a conversation, or a choice. The grammar point becomes easier to remember because students remember the scene first.`,
     coverLabel: "Dialogue + visual scene",
+    coverStyle: "sky",
     tags: ["Grammar", "Methodology", "Visual support", "Communicative", "A1-A2"],
     images: [],
     source: "core",
@@ -79,6 +90,7 @@ The teacher's job here is to make the task clear enough that students understand
 
 The best communicative grammar tasks have three qualities: a clear objective, a real information gap or interaction need, and a natural reason for the target structure to appear. When those are present, grammar stops feeling like an academic exercise and starts feeling like usable language.`,
     coverLabel: "Role play + pair task",
+    coverStyle: "forest",
     tags: ["Speaking", "Grammar", "Communicative", "Activities", "Adults"],
     images: [],
     source: "core",
@@ -97,6 +109,7 @@ Comparison is especially effective when two forms are often confused. Learners c
 
 In short, concept questions check meaning, noticing tasks reveal pattern, and comparison tasks sharpen boundaries. Together they make grammar teaching much more precise and much less dependent on vague teacher intuition.`,
     coverLabel: "Concept board + contrasts",
+    coverStyle: "plum",
     tags: ["Grammar", "Methodology", "Revision", "B1-B2"],
     images: [],
     source: "core",
@@ -115,6 +128,7 @@ Physical prompts also help. Real objects, flashcards, movement, and board races 
 
 The practical takeaway is that revision should be planned in small loops. A lesson can open with a quick retrieval task, recycle the target structure during communication, and then revisit it in a fast reflective activity at the end. Frequent, deliberate returns beat occasional long reviews almost every time.`,
     coverLabel: "Auction + game cards",
+    coverStyle: "sand",
     tags: ["Revision", "Activities", "Grammar", "Methodology", "Young learners"],
     images: [],
     source: "core",
@@ -150,6 +164,7 @@ export function normalizeTeacherMaterial(input: unknown): TeacherMaterial | null
       description: material.description.trim(),
       article: material.article.trim(),
       coverLabel: typeof material.coverLabel === "string" && material.coverLabel.trim() ? material.coverLabel.trim() : material.title.trim(),
+      coverStyle: typeof material.coverStyle === "string" && material.coverStyle.trim() ? material.coverStyle.trim() : "sky",
       tags: Array.isArray(material.tags) ? material.tags.filter((tag): tag is string => typeof tag === "string" && tag.trim().length > 0) : [],
       images: Array.isArray(material.images)
         ? material.images.filter(
@@ -192,6 +207,7 @@ export function normalizeTeacherMaterial(input: unknown): TeacherMaterial | null
       typeof material.imageLabel === "string" && material.imageLabel.trim()
         ? material.imageLabel.trim()
         : material.title.trim(),
+    coverStyle: "sky",
     tags: [],
     images: [],
     source: material.source === "published" ? "published" : "core",

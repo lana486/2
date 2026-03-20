@@ -9,6 +9,7 @@ import {
   TEACHER_MATERIALS_STORAGE_KEY,
   createPublishedMaterialId,
   normalizeTeacherMaterials,
+  teacherCoverOptions,
   teacherTagOptions,
   type TeacherMaterial,
   type TeacherMaterialImage,
@@ -23,29 +24,12 @@ function fileToDataUrl(file: File) {
   });
 }
 
-const publisherHighlights = [
-  {
-    label: "Flow",
-    steps: ["Create", "Publish", "Review in Hub"],
-    detail: "Move from drafting to a final Teacher Hub card without extra steps or exports.",
-  },
-  {
-    label: "Storage",
-    value: "Saved in your browser",
-    detail: "Materials stay on this device, which keeps the workflow fast while you iterate.",
-  },
-  {
-    label: "Best for",
-    value: "Teacher-made methodology",
-    detail: "A good fit for explainers, lesson notes, and custom classroom guidance.",
-  },
-] as const;
-
 export function TeacherMaterialPublisher() {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [article, setArticle] = useState("");
+  const [selectedCover, setSelectedCover] = useState<(typeof teacherCoverOptions)[number]["id"]>("sky");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [images, setImages] = useState<TeacherMaterialImage[]>([]);
 
@@ -56,10 +40,11 @@ export function TeacherMaterialPublisher() {
       article:
         article ||
         "This will become the main article text. Use this space for a full teacher note, methodology explanation, worksheet guide, or lesson commentary.",
+      coverStyle: selectedCover,
       tags: selectedTags,
       images,
     }),
-    [title, description, article, selectedTags, images],
+    [title, description, article, selectedCover, selectedTags, images],
   );
 
   function toggleTag(tag: string) {
@@ -87,6 +72,7 @@ export function TeacherMaterialPublisher() {
       description: description.trim(),
       article: article.trim(),
       coverLabel: selectedTags[0] || "Teacher material",
+      coverStyle: selectedCover,
       tags: selectedTags,
       images,
       source: "published",
@@ -122,23 +108,6 @@ export function TeacherMaterialPublisher() {
               Keep it simple: add a title, a short description, the full article, a few thematic tags, and optional
               images. After publishing, the material appears directly in Teacher Hub.
             </p>
-          </div>
-          <div className="teacher-publisher-stat-grid">
-            {publisherHighlights.map((item) => (
-              <article key={item.label}>
-                <span>{item.label}</span>
-                {"steps" in item ? (
-                  <div className="teacher-publisher-flow-steps" aria-label={item.steps.join(", ")}>
-                    {item.steps.map((step) => (
-                      <b key={step}>{step}</b>
-                    ))}
-                  </div>
-                ) : (
-                  <strong>{item.value}</strong>
-                )}
-                <p>{item.detail}</p>
-              </article>
-            ))}
           </div>
         </section>
 
@@ -179,6 +148,29 @@ export function TeacherMaterialPublisher() {
                 placeholder="Write the full article here. You can structure it in paragraphs and leave blank lines between sections."
               />
             </label>
+
+            <section className="teacher-cover-chooser">
+              <div className="section-header-row">
+                <div>
+                  <p className="eyebrow">Cover</p>
+                  <h2>Choose a cover style</h2>
+                </div>
+              </div>
+              <div className="teacher-cover-grid">
+                {teacherCoverOptions.map((cover) => (
+                  <button
+                    key={cover.id}
+                    type="button"
+                    className={`teacher-cover-option teacher-cover-${cover.id} ${
+                      selectedCover === cover.id ? "active" : ""
+                    }`}
+                    onClick={() => setSelectedCover(cover.id)}
+                  >
+                    <span>{cover.label}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
 
             <section className="teacher-tag-chooser">
               <div className="section-header-row">
@@ -241,7 +233,7 @@ export function TeacherMaterialPublisher() {
             </div>
 
             <article className="teacher-topic-card teacher-topic-card-preview active">
-              <div className="teacher-topic-art">{preview.tags[0] || "New material"}</div>
+              <div className={`teacher-topic-art teacher-cover-${preview.coverStyle}`}>{preview.tags[0] || "New material"}</div>
               <div>
                 <p className="eyebrow">Published Material</p>
                 <h2>{preview.title}</h2>

@@ -1431,12 +1431,19 @@ textarea {
   font-size: 0.96rem;
 }
 
+.teacher-hub-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
 .teacher-hub-visual {
   position: relative;
   min-height: 380px;
   border-radius: 28px;
 }
 
+.teacher-hub-stats article,
 .teacher-hub-visual-main,
 .teacher-card {
   display: grid;
@@ -1446,6 +1453,13 @@ textarea {
   border: 1px solid rgba(31, 47, 70, 0.08);
   background: #fff;
   box-shadow: 0 14px 30px rgba(31, 47, 70, 0.06);
+}
+
+.teacher-hub-stats span {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.72;
 }
 
 .teacher-hub-visual-main {
