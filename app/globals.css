@@ -980,9 +980,12 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.studio-shell,
 .generated-shell {
   padding: 28px;
+}
+
+.studio-shell {
+  padding: 0 !important;
 }
 
 .studio-intro,
