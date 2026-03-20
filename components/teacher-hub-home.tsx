@@ -54,21 +54,18 @@ const workflowSteps = [
   },
 ];
 
-const testimonials = [
+const proofPoints = [
   {
-    quote:
-      "I stopped rebuilding the same B1 speaking lessons every week. TeacherHub gives me a strong starting point I can trust.",
-    name: "Marta, secondary teacher",
+    label: "Used for",
+    value: "B1 speaking lessons, grammar support, and low-prep classroom planning",
   },
   {
-    quote:
-      "The materials feel written by someone who has actually taught the lesson, not by a content farm chasing volume.",
-    name: "Danylo, private tutor",
+    label: "Trusted by",
+    value: "Secondary teachers, tutors, and teacher trainers across mixed contexts",
   },
   {
-    quote:
-      "The methodology guides are the reason I stayed. They help me explain my choices and not just deliver activities.",
-    name: "Sofiia, teacher trainer",
+    label: "What stands out",
+    value: "Materials feel teachable immediately instead of looking polished but vague",
   },
 ];
 
@@ -170,7 +167,7 @@ export function TeacherHubHome() {
               <p className="eyebrow">Curated Materials</p>
               <h2>Open lessons and guides that already feel classroom-ready.</h2>
             </div>
-            <span className="section-badge">Built for clarity, pacing, and real teacher use</span>
+            <p className="teacherhub-home-meta-note">Built for clarity, pacing, and real teacher use.</p>
           </div>
 
           <div className="learnflow-template-grid">
@@ -263,7 +260,7 @@ export function TeacherHubHome() {
               <p className="eyebrow">Teacher Proof</p>
               <h2>This is where teachers land when they want better material, not more noise.</h2>
             </div>
-            <span className="section-badge">Focused on trust, curation, and classroom usefulness</span>
+            <p className="teacherhub-home-meta-note">Focused on trust, curation, and classroom usefulness.</p>
           </div>
 
           <div className="teacher-hub-stats">
@@ -281,13 +278,20 @@ export function TeacherHubHome() {
             </article>
           </div>
 
-          <div className="testimonial-grid">
-            {testimonials.map((testimonial) => (
-              <article key={testimonial.name} className="testimonial-card">
-                <p>{testimonial.quote}</p>
-                <strong>{testimonial.name}</strong>
+          <div className="teacherhub-home-proof-grid">
+            {proofPoints.map((item) => (
+              <article key={item.label} className="teacher-card teacherhub-home-proof-card">
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
               </article>
             ))}
+          </div>
+
+          <div className="teacherhub-home-proof-summary">
+            <p>
+              TeacherHub is meant to feel quiet and useful: fewer decorative interruptions, stronger lesson cards, and
+              materials that already make pedagogical sense when a teacher opens them.
+            </p>
           </div>
         </section>
 

@@ -97,10 +97,28 @@ export function LessonStudioForm() {
             Filter by topic and level, browse polished lesson cards, and then send the selected idea into the builder
             below for AI adaptation.
           </p>
+          <div className="learnflow-searchbar studio-hero-searchbar">
+            <input
+              type="text"
+              value="Search subjects, topics, or standards (e.g., Future forms for speaking lessons)"
+              readOnly
+            />
+            <button type="button" className="button learnflow-primary">
+              Search
+            </button>
+          </div>
           <div className="studio-hero-stats">
             <span>120+ lesson directions</span>
             <span>AI-ready formats</span>
             <span>Teacher workflows</span>
+          </div>
+          <div className="learnflow-pill-row studio-hero-pill-row">
+            <span className="learnflow-pill-label">Popular filters</span>
+            {popularFilters.map((pill) => (
+              <span key={pill} className="learnflow-pill">
+                {pill}
+              </span>
+            ))}
           </div>
         </div>
         <div className="studio-hero-visual">
@@ -123,38 +141,13 @@ export function LessonStudioForm() {
           <p className="studio-results-note">{filteredLessons.length} lesson directions match your filters right now.</p>
         </div>
 
-        <section className="studio-market-search">
-          <div className="learnflow-search-copy">
-            <p className="eyebrow">Find Materials</p>
-            <h2>Find the perfect material for your next class</h2>
-          </div>
-          <div className="learnflow-searchbar">
-            <input
-              type="text"
-              value="Search subjects, topics, or standards (e.g., Future forms for speaking lessons)"
-              readOnly
-            />
-            <button type="button" className="button learnflow-primary">
-              Search
-            </button>
-          </div>
-          <div className="learnflow-pill-row">
-            <span className="learnflow-pill-label">Popular filters:</span>
-            {popularFilters.map((pill) => (
-              <span key={pill} className="learnflow-pill">
-                {pill}
-              </span>
-            ))}
-          </div>
-        </section>
-
         <section className="studio-featured-content">
           <div className="section-header-row">
             <div>
               <p className="eyebrow">Featured Content</p>
               <h2>Ready-made templates to save you hours</h2>
             </div>
-            <span className="studio-inline-note">Use one as-is or send it into the AI builder below.</span>
+            <p className="studio-inline-note">Use one as-is or send it into the AI builder below.</p>
           </div>
 
           <div className="learnflow-template-grid studio-template-grid">
