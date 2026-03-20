@@ -332,6 +332,15 @@ textarea {
   overflow: hidden;
 }
 
+.studio-shell {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(166, 201, 255, 0.14), transparent 22%),
+    radial-gradient(circle at 86% 10%, rgba(202, 225, 255, 0.14), transparent 20%),
+    linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+  border-color: rgba(31, 47, 70, 0.08);
+  box-shadow: 0 24px 60px rgba(96, 128, 180, 0.08);
+}
+
 .hero-slide {
   grid-template-columns: 1.1fr 0.9fr;
   min-height: 80vh;
