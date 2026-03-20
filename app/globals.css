@@ -3121,6 +3121,10 @@ button[disabled] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .teacher-article-gallery {
+    grid-template-columns: 1fr;
+  }
+
   .feature-card-1,
   .feature-card-2,
   .feature-card-3,
@@ -3232,6 +3236,10 @@ button[disabled] {
   }
 
   .studio-lesson-card {
+    grid-template-columns: 1fr;
+  }
+
+  .teacher-uploaded-image-card {
     grid-template-columns: 1fr;
   }
 
