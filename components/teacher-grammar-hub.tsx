@@ -70,19 +70,27 @@ export function TeacherGrammarHub() {
               <span className="teacher-hub-inline-note">Title, short description, article, tags, and images only.</span>
             </div>
           </div>
-          <div className="teacher-hub-stats">
-            <article>
-              <span>Materials</span>
-              <strong>{allMaterials.length}</strong>
-            </article>
-            <article>
-              <span>Published by teachers</span>
-              <strong>{publishedMaterials.length}</strong>
-            </article>
-            <article>
-              <span>Format</span>
-              <strong>Article + gallery + tags</strong>
-            </article>
+          <div className="teacher-hub-visual">
+            <div className={`teacher-hub-visual-main teacher-cover-${activeContent.coverStyle}`}>
+              {activeContent.images[0] ? (
+                <img src={activeContent.images[0].src} alt={activeContent.images[0].name} className="teacher-hub-visual-image" />
+              ) : null}
+              <div className="teacher-hub-visual-overlay">
+                <span>{activeContent.source === "published" ? "Published material" : "Core material"}</span>
+                <strong>{activeContent.coverLabel}</strong>
+                <p>{activeContent.description}</p>
+              </div>
+            </div>
+
+            <div className="teacher-hub-floating teacher-hub-floating-top">
+              <span>Current selection</span>
+              <strong>{activeContent.tags[0] ?? "Teacher article"}</strong>
+            </div>
+
+            <div className="teacher-hub-floating teacher-hub-floating-bottom">
+              <span>Library</span>
+              <strong>{allMaterials.length} materials ready</strong>
+            </div>
           </div>
         </div>
 
@@ -94,16 +102,18 @@ export function TeacherGrammarHub() {
               className={`teacher-topic-card ${activeBlock === material.id ? "active" : ""}`}
               onClick={() => setActiveBlock(material.id)}
             >
-              <div className="teacher-topic-art">{material.coverLabel}</div>
+              <div className={`teacher-topic-art teacher-cover-${material.coverStyle}`}>{material.coverLabel}</div>
               <div>
                 <p className="eyebrow">{material.source === "published" ? "Published Material" : "Core Material"}</p>
                 <h2>{material.title}</h2>
                 <p>{material.description}</p>
-                <div className="teacher-card-tags">
-                  {material.tags.slice(0, 3).map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
+                {material.tags.length > 0 ? (
+                  <div className="teacher-card-tags">
+                    {material.tags.slice(0, 3).map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </button>
           ))}
@@ -117,16 +127,18 @@ export function TeacherGrammarHub() {
                 <h2>{activeContent.title}</h2>
                 <p className="lead">{activeContent.description}</p>
               </div>
-              <div className="teacher-lesson-image">
+              <div className={`teacher-lesson-image teacher-cover-${activeContent.coverStyle}`}>
                 <div className="teacher-lesson-image-tag">{activeContent.coverLabel}</div>
               </div>
             </section>
 
-            <section className="teacher-tag-strip">
-              {activeContent.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </section>
+            {activeContent.tags.length > 0 ? (
+              <section className="teacher-tag-strip">
+                {activeContent.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </section>
+            ) : null}
 
             {activeContent.images.length > 0 ? (
               <section className="teacher-article-gallery">
