@@ -202,9 +202,8 @@ export function TeacherGrammarHub() {
                     </div>
                   ) : null}
 
-                  <div className="teacher-card-actions">
-                    <span className="teacher-card-open-link">Open article in a new window</span>
-                    {canDelete ? (
+                  {canDelete ? (
+                    <div className="teacher-card-actions">
                       <button
                         type="button"
                         className="teacher-card-delete"
@@ -215,8 +214,8 @@ export function TeacherGrammarHub() {
                       >
                         Delete article
                       </button>
-                    ) : null}
-                  </div>
+                    </div>
+                  ) : null}
                 </div>
               </article>
             );

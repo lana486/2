@@ -1770,13 +1770,8 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 14px;
-}
-
-.teacher-card-open-link {
-  color: #3d63af;
-  font-weight: 600;
 }
 
 .teacher-card-delete {
