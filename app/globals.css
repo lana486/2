@@ -1216,53 +1216,37 @@ textarea {
   font-size: 0.84rem;
 }
 
-.lesson-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
+.lesson-detail-page {
   display: grid;
-  place-items: center;
-  padding: 24px;
-  background: rgba(20, 29, 46, 0.52);
-  backdrop-filter: blur(10px);
+  gap: 20px;
 }
 
-.lesson-modal {
-  position: relative;
-  width: min(720px, 100%);
-  max-height: min(92vh, 920px);
-  overflow: auto;
-  border-radius: 32px;
+.lesson-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lesson-detail-card {
+  display: grid;
+  border-radius: 36px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 47, 70, 0.08);
   background: #fff;
-  box-shadow: 0 28px 80px rgba(20, 29, 46, 0.24);
+  box-shadow: 0 28px 80px rgba(20, 29, 46, 0.14);
 }
 
-.lesson-modal-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  z-index: 2;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #243757;
-  font-size: 1.9rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.lesson-modal-cover {
+.lesson-detail-cover {
   position: relative;
-  min-height: 280px;
+  min-height: 360px;
   padding: 28px;
   display: grid;
   align-content: end;
   color: #fff;
 }
 
-.lesson-modal-cover-badge {
+.lesson-detail-topic {
   position: absolute;
   top: 24px;
   left: 24px;
@@ -1273,51 +1257,67 @@ textarea {
   font-size: 0.86rem;
 }
 
-.lesson-modal-cover strong {
+.lesson-detail-cover strong {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 0.94;
-  letter-spacing: -0.06em;
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
 }
 
-.lesson-modal-meta {
+.lesson-detail-body {
+  display: grid;
+  gap: 24px;
+  padding: 26px 28px 32px;
+}
+
+.lesson-detail-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 20px 28px 0;
 }
 
-.lesson-modal-meta span {
-  padding: 9px 14px;
+.lesson-detail-meta span {
+  padding: 10px 16px;
   border-radius: 999px;
   background: #eef3fb;
   color: #394a68;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
 }
 
-.lesson-modal-body {
+.lesson-detail-copy {
   display: grid;
-  gap: 18px;
-  padding: 18px 28px 30px;
+  gap: 16px;
 }
 
-.lesson-modal-body h3 {
+.lesson-detail-copy .eyebrow {
+  margin-bottom: 0;
+}
+
+.lesson-detail-copy h1 {
   margin: 0;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 0.94;
-  letter-spacing: -0.06em;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+  color: #17253b;
 }
 
-.lesson-modal-body p {
+.lesson-detail-copy p:last-child {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.7;
+  max-width: 860px;
+  font-size: clamp(1.02rem, 2vw, 1.24rem);
+  line-height: 1.72;
   color: #4d5f80;
 }
 
-.lesson-modal-link {
-  justify-self: start;
+.lesson-detail-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid rgba(31, 47, 70, 0.08);
+  color: #243757;
 }
 
 .studio-form label {
@@ -1816,7 +1816,6 @@ textarea {
 }
 
 .teacher-publisher-hero {
-  grid-template-columns: 1.05fr 0.95fr;
   background:
     radial-gradient(circle at 25% 72%, rgba(132, 177, 255, 0.16), transparent 24%),
     radial-gradient(circle at 68% 18%, rgba(129, 186, 255, 0.14), transparent 24%),
@@ -1835,72 +1834,6 @@ textarea {
 .teacher-publisher-hero h1 {
   font-size: clamp(3rem, 6vw, 5.2rem);
   line-height: 0.92;
-}
-
-.teacher-publisher-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  align-self: start;
-  align-content: start;
-}
-
-.teacher-publisher-stat-grid article {
-  display: grid;
-  align-content: start;
-  gap: 12px;
-  min-height: 0;
-  padding: 20px;
-  border-radius: 26px;
-  border: 1px solid rgba(31, 47, 70, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 255, 0.88));
-  box-shadow: 0 16px 32px rgba(31, 47, 70, 0.06);
-}
-
-.teacher-publisher-stat-grid span {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.72;
-}
-
-.teacher-publisher-stat-grid strong {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.35rem, 2vw, 1.7rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: #17253b;
-}
-
-.teacher-publisher-stat-grid p {
-  margin: 0;
-  color: #596781;
-  font-size: 0.95rem;
-  line-height: 1.55;
-}
-
-.teacher-publisher-flow-steps {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-
-.teacher-publisher-flow-steps b {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(31, 47, 70, 0.06);
-  color: #20324d;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.teacher-publisher-flow-steps b:not(:last-child)::after {
-  content: "→";
-  color: rgba(31, 47, 70, 0.32);
 }
 
 .teacher-publisher-layout {
@@ -1922,6 +1855,43 @@ textarea {
 
 .teacher-publisher-grid-wide {
   align-items: start;
+}
+
+.teacher-cover-chooser,
+.teacher-tag-chooser {
+  display: grid;
+  gap: 16px;
+}
+
+.teacher-cover-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.teacher-cover-option {
+  min-height: 120px;
+  display: grid;
+  align-content: end;
+  padding: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(31, 47, 70, 0.08);
+  color: #20324d;
+  text-align: left;
+  box-shadow: 0 14px 30px rgba(31, 47, 70, 0.06);
+}
+
+.teacher-cover-option span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.teacher-cover-option.active {
+  outline: 3px solid rgba(79, 118, 196, 0.22);
+  outline-offset: 2px;
 }
 
 .teacher-publisher-form label,
@@ -1962,11 +1932,6 @@ textarea {
 button[disabled] {
   opacity: 0.55;
   cursor: not-allowed;
-}
-
-.teacher-tag-chooser {
-  display: grid;
-  gap: 16px;
 }
 
 .teacher-tag-list {
@@ -2024,6 +1989,48 @@ button[disabled] {
   border: 0;
   background: transparent;
   color: #4f76c4;
+}
+
+.teacher-cover-sky {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.78), transparent 18%),
+    linear-gradient(135deg, #c3d6f8 0%, #edf4fe 100%);
+}
+
+.teacher-cover-forest {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.42), transparent 18%),
+    linear-gradient(135deg, #6ab39b 0%, #dff6ea 100%);
+}
+
+.teacher-cover-plum {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.4), transparent 18%),
+    linear-gradient(135deg, #7d62c8 0%, #efe9ff 100%);
+}
+
+.teacher-cover-sand {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.45), transparent 18%),
+    linear-gradient(135deg, #d3a35b 0%, #f7e9d2 100%);
+}
+
+.teacher-cover-midnight {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.16), transparent 18%),
+    linear-gradient(135deg, #20324d 0%, #516987 100%);
+  color: #f7f9ff;
+}
+
+.teacher-cover-midnight span,
+.teacher-cover-midnight .teacher-lesson-image-tag {
+  color: #20324d;
+}
+
+.teacher-cover-coral {
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.45), transparent 18%),
+    linear-gradient(135deg, #e58d7e 0%, #ffe6de 100%);
 }
 
 .learnflow-hero,
@@ -3243,23 +3250,17 @@ button[disabled] {
     grid-template-columns: 1fr;
   }
 
-  .lesson-modal-backdrop {
-    padding: 16px;
-  }
-
-  .lesson-modal {
-    border-radius: 24px;
-  }
-
-  .lesson-modal-cover {
-    min-height: 220px;
+  .lesson-detail-cover {
+    min-height: 240px;
     padding: 22px;
   }
 
-  .lesson-modal-meta,
-  .lesson-modal-body {
-    padding-left: 22px;
-    padding-right: 22px;
+  .lesson-detail-body {
+    padding: 22px;
+  }
+
+  .lesson-detail-copy h1 {
+    font-size: clamp(2.4rem, 12vw, 4rem);
   }
 
   .metric-card {
