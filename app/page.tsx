@@ -1,5 +1,5 @@
-import { TeacherMaterialPublisher } from "@/components/teacher-material-publisher";
+import { TeacherHubHome } from "@/components/teacher-hub-home";
 
 export default function HomePage() {
-  return <TeacherMaterialPublisher />;
+  return <TeacherHubHome />;
 }
